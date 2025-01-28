@@ -1,7 +1,5 @@
 import { z } from 'zod';
 
-import 'dotenv/config';
-
 import { Agent } from '../agent';
 import { MastraDeployer } from '../deployer';
 import { MastraEngine } from '../engine';
@@ -18,6 +16,26 @@ import { Workflow } from '../workflows';
 
 import { StripUndefined } from './types';
 
+export type MastraConfig<
+  TSyncs extends Record<string, SyncAction<any, any, any, any>> = Record<string, SyncAction<any, any, any, any>>,
+  TAgents extends Record<string, Agent<any>> = Record<string, Agent<any>>,
+  TWorkflows extends Record<string, Workflow> = Record<string, Workflow>,
+  TVectors extends Record<string, MastraVector> = Record<string, MastraVector>,
+  TTTS extends Record<string, MastraTTS> = Record<string, MastraTTS>,
+  TLogger extends Logger = Logger,
+> = {
+  memory?: MastraMemory;
+  syncs?: TSyncs;
+  agents?: TAgents;
+  engine?: MastraEngine;
+  vectors?: TVectors;
+  logger?: TLogger | false;
+  workflows?: TWorkflows;
+  tts?: TTTS;
+  telemetry?: OtelConfig;
+  deployer?: MastraDeployer;
+};
+
 @InstrumentClass({
   prefix: 'mastra',
   excludeMethods: ['getLogger', 'getTelemetry'],
@@ -32,7 +50,7 @@ export class Mastra<
 > {
   private vectors?: TVectors;
   private agents: TAgents;
-  private logger: TLogger;
+  protected logger: TLogger;
   private syncs: TSyncs;
   private workflows: TWorkflows;
   private telemetry?: Telemetry;
@@ -41,18 +59,7 @@ export class Mastra<
   engine?: MastraEngine;
   memory?: MastraMemory;
 
-  constructor(config?: {
-    memory?: MastraMemory;
-    syncs?: TSyncs;
-    agents?: TAgents;
-    engine?: MastraEngine;
-    vectors?: TVectors;
-    logger?: TLogger | false;
-    workflows?: TWorkflows;
-    tts?: TTTS;
-    telemetry?: OtelConfig;
-    deployer?: MastraDeployer;
-  }) {
+  constructor(config?: MastraConfig<TSyncs, TAgents, TWorkflows, TVectors, TTTS, TLogger>) {
     /*
       Logger
     */

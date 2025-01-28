@@ -66,6 +66,13 @@ interface WorkflowRunState {
   timestamp: number;
 }
 
+export interface WorkflowOptions<TTriggerSchema extends z.ZodType<any> = any> {
+  name: string;
+  triggerSchema?: TTriggerSchema;
+  retryConfig?: RetryConfig;
+  mastra?: MastraPrimitives;
+}
+
 export class Workflow<
   TSteps extends Step<any, any, any>[] = any,
   TTriggerSchema extends z.ZodType<any> = any,
@@ -96,17 +103,7 @@ export class Workflow<
    * @param name - Identifier for the workflow (not necessarily unique)
    * @param logger - Optional logger instance
    */
-  constructor({
-    name,
-    triggerSchema,
-    retryConfig,
-    mastra,
-  }: {
-    name: string;
-    triggerSchema?: TTriggerSchema;
-    retryConfig?: RetryConfig;
-    mastra?: MastraPrimitives;
-  }) {
+  constructor({ name, triggerSchema, retryConfig, mastra }: WorkflowOptions<TTriggerSchema>) {
     super({ component: 'WORKFLOW', name });
 
     this.name = name;

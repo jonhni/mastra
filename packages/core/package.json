@@ -12,27 +12,29 @@
     ".": {
       "import": {
         "types": "./dist/index.d.ts",
-        "default": "./dist/core.esm.js"
+        "default": "./dist/index.js"
       }
     },
-    "./logger": {
+    "./*": {
       "import": {
-        "types": "./dist/logger/index.d.ts",
-        "default": "./dist/logger.esm.js"
+        "types": "./dist/*/index.d.ts",
+        "default": "./dist/*/index.js"
       }
     },
+    "./llm": null,
+    "./action": null,
+    "./queue": null,
+    "./run": null,
     "./package.json": "./package.json"
   },
   "scripts": {
     "check": "tsc --noEmit",
     "analyze": "size-limit --why",
-    "build": "dts build --format esm",
-    "build:dev": "dts watch",
+    "build": "tsup-node src/index.ts src/*/index.ts --format esm --clean --dts --treeshake",
+    "build:dev": "pnpm build --watch",
     "lint": "dts lint",
     "size": "size-limit",
-    "start": "dts watch",
-    "test": "vitest run",
-    "clean": "rm -rf dist && rm -rf node_modules"
+    "test": "vitest run"
   },
   "husky": {
     "hooks": {
@@ -106,6 +108,7 @@
     "size-limit": "^11.1.4",
     "ts-node": "^10.9.2",
     "tslib": "^2.6.3",
+    "tsup": "^8.3.6",
     "typescript": "5.5.4",
     "vitest": "^2.1.8"
   }
