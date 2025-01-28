@@ -1,4 +1,4 @@
-import { QueryResult, IndexStats } from '@mastra/core';
+import { QueryResult, IndexStats } from '@mastra/core/memory';
 
 import { ChromaVector } from './';
 

@@ -1,5 +1,5 @@
 import { describe, it, expect, jest } from '@jest/globals';
-import { type ModelConfig } from '@mastra/core';
+import type { ModelConfig } from '@mastra/core/llm';
 
 import { TestCaseWithInstructions } from '../utils';
 

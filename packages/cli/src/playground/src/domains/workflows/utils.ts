@@ -1,5 +1,5 @@
 import Dagre from '@dagrejs/dagre';
-import { StepCondition } from '@mastra/core';
+import type { StepCondition } from '@mastra/core/workflows';
 import { Node, Edge, MarkerType } from '@xyflow/react';
 
 export type Condition = {
@@ -17,11 +17,11 @@ export type Condition = {
 
 export const pathAlphabet = 'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('');
 
-export function extractConditions(group?: StepCondition<any>) {
+export function extractConditions(group?: StepCondition<any, any>) {
   let result: Condition[] = [];
   if (!group) return result;
 
-  function recurse(group: StepCondition<any>, conj?: 'and' | 'or') {
+  function recurse(group: StepCondition<any, any>, conj?: 'and' | 'or') {
     if ('ref' in group) {
       const { ref, query } = group;
       result.push({ ref, query, conj });

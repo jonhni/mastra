@@ -3,7 +3,7 @@ import { z } from 'zod';
 import { Agent } from '../agent';
 import { MastraDeployer } from '../deployer';
 import { MastraEngine } from '../engine';
-import { LLM } from '../llm';
+import { LLM } from '../llm/llm';
 import { ModelConfig } from '../llm/types';
 import { LogLevel, Logger, createLogger, noopLogger } from '../logger';
 import { MastraMemory } from '../memory';

@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 import { Agent } from '../agent';
 import { MastraEngine } from '../engine';
-import { LLM } from '../llm';
+import { LLM } from '../llm/llm';
 import { ModelConfig } from '../llm/types';
 import { Logger } from '../logger';
 import { MastraMemory } from '../memory';
