@@ -1,4 +1,6 @@
-import { Mastra, Agent, EmbedManyResult } from '@mastra/core';
+import { Mastra } from '@mastra/core';
+import { Agent } from '@mastra/core/agent';
+import { EmbedManyResult } from '@mastra/core/embeddings';
 import { embed, MDocument, createVectorQueryTool, createDocumentChunkerTool } from '@mastra/rag';
 import { PgVector } from '@mastra/vector-pg';
 
