@@ -1,4 +1,4 @@
-import { embed as embedCore, EmbeddingOptions } from '@mastra/core';
+import { embed as embedCore, EmbeddingOptions } from '@mastra/core/embeddings';
 import { Document as Chunk } from 'llamaindex';
 
 export const embed = (chunk: Chunk | string | string[] | Chunk[], options: EmbeddingOptions) => {
