@@ -381,6 +381,9 @@ importers:
 
   examples/basics/rag/basic-rag:
     dependencies:
+      '@mastra/core':
+        specifier: workspace:*
+        version: link:../../../../packages/core
       '@mastra/rag':
         specifier: workspace:*
         version: link:../../../../packages/rag
@@ -418,6 +421,9 @@ importers:
 
   examples/basics/rag/cleanup-rag:
     dependencies:
+      '@mastra/core':
+        specifier: workspace:*
+        version: link:../../../../packages/core
       '@mastra/rag':
         specifier: workspace:*
         version: link:../../../../packages/rag
@@ -431,6 +437,9 @@ importers:
 
   examples/basics/rag/cot-rag:
     dependencies:
+      '@mastra/core':
+        specifier: workspace:*
+        version: link:../../../../packages/core
       '@mastra/rag':
         specifier: workspace:*
         version: link:../../../../packages/rag
@@ -444,6 +453,9 @@ importers:
 
   examples/basics/rag/cot-workflow-rag:
     dependencies:
+      '@mastra/core':
+        specifier: workspace:*
+        version: link:../../../../packages/core
       '@mastra/rag':
         specifier: workspace:*
         version: link:../../../../packages/rag
@@ -474,6 +486,9 @@ importers:
 
   examples/basics/rag/filter-rag:
     dependencies:
+      '@mastra/core':
+        specifier: workspace:*
+        version: link:../../../../packages/core
       '@mastra/rag':
         specifier: workspace:*
         version: link:../../../../packages/rag
@@ -487,6 +502,9 @@ importers:
 
   examples/basics/rag/graph-rag:
     dependencies:
+      '@mastra/core':
+        specifier: workspace:*
+        version: link:../../../../packages/core
       '@mastra/rag':
         specifier: workspace:*
         version: link:../../../../packages/rag
@@ -541,6 +559,9 @@ importers:
 
   examples/basics/rag/rerank-rag:
     dependencies:
+      '@mastra/core':
+        specifier: workspace:*
+        version: link:../../../../packages/core
       '@mastra/rag':
         specifier: workspace:*
         version: link:../../../../packages/rag
