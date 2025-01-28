@@ -8,4 +8,4 @@ packages:
   - "examples/*"
   - "examples/basics/**/*"
   - "docs"
-  - "!**/node_modules/**"
+  - "packages/cli/src/playground"
