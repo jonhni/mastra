@@ -22,6 +22,23 @@ export function extractConditions(group?: StepCondition<any, any>) {
   if (!group) return result;
 
   function recurse(group: StepCondition<any, any>, conj?: 'and' | 'or') {
+    const simpleCondition = Object.entries(group).find(([key]) => key.includes('.'));
+    if (simpleCondition) {
+      const [key, queryValue] = simpleCondition;
+      const [stepId, ...pathParts] = key.split('.');
+      const ref = {
+        step: {
+          id: stepId,
+        },
+        path: pathParts.join('.'),
+      };
+      result.push({
+        ref,
+        query: { [queryValue === true || queryValue === false ? 'is' : 'eq']: String(queryValue) },
+        conj,
+      });
+    }
+
     if ('ref' in group) {
       const { ref, query } = group;
       result.push({ ref, query, conj });
